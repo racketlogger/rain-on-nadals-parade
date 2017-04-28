@@ -17,164 +17,222 @@
 		}
 
 		#page-wrap {
-      width: 980px;
+      width: 950px;
       margin: 10% auto;
       padding: 80px;
-      background: rgba(0,0,0, 0.3);
+      background: rgba(0,0,0, 0.5);
       -moz-box-shadow: 0 0 20px black;
       -webkit-box-shadow: 0 0 20px black;
       box-shadow: 0 0 20px black;
     }
-		p { color: #fff; font: 40px Georgia, Serif; margin: auto auto;}
+		p { color: #fff; font: 38px Georgia, Serif; margin: auto auto;}
+    a { color: #fff; padding-right: 20px; font: 30px; font-weight: bold; text-decoration: none;}
+    p#oracle { color: rgba(200,200,200,0.5); }
 	</style>
 </head>
 
 <body>
 
     <div id="page-wrap">
-           <p><span id="player">P</span> is going to <span id="adjective">A</span> <span id="verb">V</span> Nadal</p>
+           <p>
+             <span id="spinner" style="display: none"><img src="images/sp.svg" width="24"/></span>
+             <span id="msg">
+               <span id="player">Someone</span> is going to <span id="adjective">brutally</span> <span id="verb">nuke</span> Nadal
+             </span>
+           </p>
+           <br/>
+           <br/>
+           <br/>
+           <br/>
+           <br/>
+           <br/>
+           <p align="left" id="clicker"><a id="rain_me" href="javascript:void(0);">+</a></p>
+           <p align="left" id="oracle" style="display: none">The Oracle is raining in Nadal's parade ...</p>
     </div>
 
     <script>
-    var players = Array(
-      "Murray",
-      "Djokovic",
-      "Wawrinka",
-      "Federer",
-      "Raonic",
-      "Nishikori",
-      "Cilic",
-      "Thiem",
-      "Goffin",
-      "Tsonga",
-      "Dimitrov",
-      "Berdych",
-      "Pouille",
-      "Sock",
-      "Kyrgios",
-      "Monfils",
-      "Bautista",
-      "Ramos-Vinolas",
-      "Carreno",
-      "Zverev",
-      "Karlovic",
-      "Gasquet",
-      "Isner",
-      "Johnson",
-      "Cuevas",
-      "Querrey",
-      "Muller",
-      "Fognini",
-      "Simon",
-      "Kohlschreiber",
-      "Ferrer",
-      "Martin",
-      "Schwartzman",
-      "Zverev",
-      "Verdasco",
-      "Sousa",
-      "Lorenzi",
-      "Troicki",
-      "Lopez",
-      "Tomic",
-      "Edmund",
-      "Evans",
-      "Young",
-      "Mahut",
-      "Haase",
-      "Mayer",
-      "Coric",
-      "Paire",
-      "Harrison",
-      "Mannarino",
-      "Jan-Lennard",
-      "Darcis",
-      "Bellucci",
-      "Yen-Hsun",
-      "Khachanov",
-      "Almagro",
-      "Vesely",
-      "Klizan",
-      "Baghdatis",
-      "Basilashvili",
-      "Berlocq",
-      "Medvedev",
-      "Nishioka",
-      "Granollers",
-      "Anderson",
-      "Jaziri",
-      "Bedene",
-      "Dutra",
-      "Chardy",
-      "Tipsarevic",
-      "Tiafoe",
-      "Istomin",
-      "Seppi"
-    );
-    var player = players[Math.floor(Math.random()*players.length)];
-    var adjectives = Array(
-      "brutally",
-      "totally",
-      "viciously",
-      "fiercely",
-      "savagely",
-      "mercilessly",
-      "murderously",
-      "brutishly",
-      "callously",
-      "hearltlessly",
-      "demonically",
-      "inexorably",
-      "remoselessly",
-      "unkindly",
-      "unrelentingly",
-      "inhumanely",
-      "barbarically",
-      "atrociously",
-      "diabolically",
-      "ferociously",
-      "ruthlessly",
-      "meanly"
-    );
-    var adjective = adjectives[Math.floor(Math.random()*adjectives.length)];
-    var verbs = Array(
-      "destroy",
-      "blow away",
-      "obliterate",
-      "liquify",
-      "obliberate",
-      "nuke",
-      "blow apart",
-      "slay",
-      "crush",
-      "ravage",
-      "kill",
-      "gut",
-      "vaporize",
-      "exterminate",
-      "snuff out",
-      "liquidate",
-      "extinguish",
-      "level out",
-      "butcher",
-      "erase",
-      "eradicate",
-      "dispatch",
-      "zap",
-      "wax",
-      "quash",
-      "deface",
-      "desolate",
-      "extirpate",
-      "cream",
-      "mutilate",
-      "annihilate",
-      "nullify"
-    );
-    var verb = verbs[Math.floor(Math.random()*verbs.length)];
-    document.getElementById("player").innerHTML = player;
-    document.getElementById("adjective").innerHTML = adjective;
-    document.getElementById("verb").innerHTML = verb;
+
+    async function rain_me(time = 3000) {
+      var player = players[Math.floor(Math.random()*players.length)];
+      var adjective = adjectives[Math.floor(Math.random()*adjectives.length)];
+      var verb = verbs[Math.floor(Math.random()*verbs.length)];
+
+      function sleep(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
+      }
+
+      if (time > 0) {
+        // document.getElementById("msg").style.color = 'rgba(255,255,255, 0)';
+        document.getElementById("msg").style.display = 'none';
+        document.getElementById("clicker").style.display = 'none';
+        document.getElementById("spinner").style.display = 'block';
+        document.getElementById("oracle").style.display = 'block';
+
+        await sleep(time);
+
+        document.getElementById("oracle").style.display = 'none';
+        document.getElementById("spinner").style.display = 'none';
+        document.getElementById("clicker").style.display = 'block';
+      }
+
+      document.getElementById("player").innerHTML = player;
+      document.getElementById("adjective").innerHTML = adjective;
+      document.getElementById("verb").innerHTML = verb;
+
+      if (time > 0) {
+        // document.getElementById("msg").style.color = 'rgba(255,255,255)';
+        document.getElementById("msg").style.display = 'block';
+      }
+      return false;
+    }
+    function click_rain() {
+      rain_me(1000)
+    }
+    window.onload = function() {
+
+          //Get a reference to the link on the page
+          // with an id of "mylink"
+          var a = document.getElementById("rain_me");
+
+          //Set code to run when the link is clicked
+          // by assigning a function to "onclick"
+          a.onclick = click_rain;
+          rain_me(0);
+          return false;
+        }
+        var players = Array(
+          "Murray",
+          "Djokovic",
+          "Wawrinka",
+          "Federer",
+          "Raonic",
+          "Nishikori",
+          "Cilic",
+          "Thiem",
+          "Goffin",
+          "Tsonga",
+          "Dimitrov",
+          "Berdych",
+          "Pouille",
+          "Sock",
+          "Kyrgios",
+          "Monfils",
+          "Bautista-Agut",
+          "Ramos-Viñolas",
+          "Carreño-Busta",
+          "Zverev",
+          "Karlovic",
+          "Gasquet",
+          "Isner",
+          "Johnson",
+          "Cuevas",
+          "Querrey",
+          "Muller",
+          "Fognini",
+          "Simon",
+          "Kohlschreiber",
+          "Ferrer",
+          "Martin",
+          "Schwartzman",
+          "Zverev",
+          "Verdasco",
+          "Sousa",
+          "Lorenzi",
+          "Troicki",
+          "Lopez",
+          "Tomic",
+          "Edmund",
+          "Evans",
+          "Young",
+          "Mahut",
+          "Haase",
+          "Mayer",
+          "Coric",
+          "Paire",
+          "Harrison",
+          "Mannarino",
+          "Jan-Lennard",
+          "Darcis",
+          "Bellucci",
+          "Yen-Hsun",
+          "Khachanov",
+          "Almagro",
+          "Vesely",
+          "Klizan",
+          "Baghdatis",
+          "Basilashvili",
+          "Berlocq",
+          "Medvedev",
+          "Nishioka",
+          "Granollers",
+          "Anderson",
+          "Jaziri",
+          "Bedene",
+          "Dutra",
+          "Chardy",
+          "Tipsarevic",
+          "Tiafoe",
+          "Istomin",
+          "Seppi"
+        );
+        var adjectives = Array(
+          "brutally",
+          "totally",
+          "viciously",
+          "fiercely",
+          "savagely",
+          "mercilessly",
+          "murderously",
+          "brutishly",
+          "callously",
+          "hearltlessly",
+          "demonically",
+          "inexorably",
+          "remoselessly",
+          "unkindly",
+          "unrelentingly",
+          "inhumanely",
+          "barbarically",
+          "atrociously",
+          "diabolically",
+          "ferociously",
+          "ruthlessly",
+          "meanly"
+        );
+        var verbs = Array(
+          "destroy",
+          "blow away",
+          "obliterate",
+          "liquify",
+          "obliberate",
+          "nuke",
+          "blow apart",
+          "slay",
+          "crush",
+          "ravage",
+          "kill",
+          "gut",
+          "vaporize",
+          "exterminate",
+          "snuff out",
+          "liquidate",
+          "extinguish",
+          "level out",
+          "butcher",
+          "erase",
+          "eradicate",
+          "dispatch",
+          "zap",
+          "wax",
+          "quash",
+          "deface",
+          "desolate",
+          "extirpate",
+          "cream",
+          "mutilate",
+          "annihilate",
+          "nullify"
+        );
     </script>
 
 
