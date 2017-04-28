@@ -20,14 +20,14 @@
       width: 950px;
       margin: 10% auto;
       padding: 80px;
-      background: rgba(0,0,0, 0.5);
+      background: rgba(0,0,0, 0.3);
       -moz-box-shadow: 0 0 20px black;
       -webkit-box-shadow: 0 0 20px black;
       box-shadow: 0 0 20px black;
     }
 		p { color: #fff; font: 38px Georgia, Serif; margin: auto auto;}
     a { color: #fff; padding-right: 20px; font: 30px; font-weight: bold; text-decoration: none;}
-    p#oracle { color: rgba(200,200,200,0.5); }
+    p#oracle { color: rgba(255,255,255,0.5); }
 	</style>
 </head>
 
@@ -47,12 +47,12 @@
            <br/>
            <br/>
            <p align="left" id="clicker"><a id="rain_me" href="javascript:void(0);">+</a></p>
-           <p align="left" id="oracle" style="display: none">The Oracle is raining in Nadal's parade ...</p>
+           <p align="left" id="oracle" style="display: none">The Oracle is raining on Nadal's parade ...</p>
     </div>
 
     <script>
 
-    async function rain_me(time = 3000) {
+    async function rain_me(time) {
       var player = players[Math.floor(Math.random()*players.length)];
       var adjective = adjectives[Math.floor(Math.random()*adjectives.length)];
       var verb = verbs[Math.floor(Math.random()*verbs.length)];
@@ -86,7 +86,7 @@
       return false;
     }
     function click_rain() {
-      rain_me(1000)
+      rain_me(2000)
     }
     window.onload = function() {
 
@@ -197,7 +197,12 @@
           "diabolically",
           "ferociously",
           "ruthlessly",
-          "meanly"
+          "meanly",
+          "barbariously",
+          "coldly",
+          "pitilessly",
+          "ferally",
+          "hardheartedly"
         );
         var verbs = Array(
           "destroy",
@@ -231,7 +236,22 @@
           "cream",
           "mutilate",
           "annihilate",
-          "nullify"
+          "nullify",
+          "BTFO",
+          "wipe out",
+          "dismantle",
+          "sabotage",
+          "shatter",
+          "ruin",
+          "wreck",
+          "murder",
+          "massacre",
+          "erase",
+          "H-bomb",
+          "own",
+          "rek",
+          "main",
+          "smash"
         );
     </script>
 
