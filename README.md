@@ -1,5 +1,5 @@
 
-[r/tennis](https://www.reddit.com/r/tennis/) RainMan rains on Nadal's parade ritle generator
+[r/tennis](https://www.reddit.com/r/tennis/) RainMan rains on Nadal's parade title generator
 
 https://racketlogger.github.io/rain-on-nadals-parade/
 
